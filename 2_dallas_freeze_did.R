@@ -41,9 +41,10 @@ df_freeze %>%
   annotate("rect", xmin=as.Date("2000-02-14"), xmax=as.Date("2000-02-20"), ymin=-Inf, ymax=Inf, 
            fill = "grey", alpha = 0.5) +
   geom_hline(yintercept = 0, color="grey", linetype="dashed") +
-  geom_line(aes(group=g, color=treat, linetype=t)) + 
+  geom_line(aes(group=g, color=treat, linetype=t), linewidth = 1) + 
   labs(color="Group", linetype="Temperature") +
   theme_bw() +
+  scale_color_manual(values = c("2021" = "black", "Control years" = "grey")) +
   theme(axis.title.x = element_blank())
 dev.off()
 
@@ -73,6 +74,7 @@ df_freeze %>%
   facet_grid(out~post, scales = "free") +
   labs(y="Number of dispatches", color="Group") +
   theme_test() +
+  scale_color_manual(values = c("2021" = "black", "Control years" = "grey")) +
   theme(axis.title.x = element_blank())
 dev.off()
 
